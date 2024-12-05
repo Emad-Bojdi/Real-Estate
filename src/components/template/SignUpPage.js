@@ -3,7 +3,7 @@
 import { useState } from "react";
 import styles from "@/template/SignUpPage.module.css"
 import Link from "next/link";
-import { Toaster, toast } from "react-host-toast";
+import { Toaster, toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { ThreeDots } from "react-loader-spinner";
 
@@ -50,7 +50,7 @@ const SignUpPage = () => {
                 <label> تکرار رمز :</label>
                 <input type="password" value={rePassword} onChange={e => setRePassword(e.target.value)} />
                 {
-                    loading ? (<ThreeDots color="304ffe" height={45} ariaLabel="three-dots-loading" visible={true} wrapperStyle={margin = "auto"} />) : (<button type="submit" onClick={signUpHandler}>
+                    loading ? (<ThreeDots color="304ffe" height={45} ariaLabel="three-dots-loading" visible={true} wrapperStyle={{"margin" : "auto"}} />) : (<button type="submit" onClick={signUpHandler}>
                         ثبت نام
                     </button>)
                 }

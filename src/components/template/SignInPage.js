@@ -4,7 +4,7 @@ import { useState } from "react";
 import styles from "@/template/SignUpPage.module.css"
 import Link from "next/link";
 import { signIn } from "next-auth/react";
-import { Toaster, toast } from "react-host-toast";
+import { Toaster, toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { ThreeDots } from "react-loader-spinner";
 
@@ -17,21 +17,20 @@ const SignInPage = () => {
 
     const signInHandler = async (e) => {
         e.preventDefault();
-        if (password !== rePassword) {
-            toast.error("رمز و تکرار آن برابر نیست!!")
-            return;
-        }
+        
         setLoading(true);
         const res = await signIn("credentials", {
             email,
             password,
             redirect: false
         })
-        const data = res.json();
         setLoading(false);
-        if (res.error) toast.error(res.error)
+        if (res.error) {
+            toast.error(res.error)
+            console.log(res.error);
+        }
         else {
-            router.push("/signin")
+            router.push("/")
         }
     }
     return (
@@ -43,7 +42,7 @@ const SignInPage = () => {
                 <label>  رمز عبور: </label>
                 <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
                 {
-                    loading ? (<ThreeDots color="304ffe" height={45} ariaLabel="three-dots-loading" visible={true} wrapperStyle={margin = "auto"} />) : (<button type="submit" onClick={signInHandler}>
+                    loading ? (<ThreeDots color="304ffe" height={45} ariaLabel="three-dots-loading" visible={true} wrapperStyle={{"margin" : "auto"}} />) : (<button type="submit" onClick={signInHandler}>
                         ورود
                     </button>)
                 }
