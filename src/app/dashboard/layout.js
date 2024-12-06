@@ -1,10 +1,11 @@
+import DashboardSidebar from "@/layout/DashboardSidebar"
 
 
-const DashboardLayout = () => {
+const DashboardLayout = ({ children }) => {
   return (
-    <div>
+    <DashboardSidebar>
       {children}
-    </div>
+    </DashboardSidebar>
   )
 }
 
