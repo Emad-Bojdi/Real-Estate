@@ -5,6 +5,7 @@ import { FiLogOut } from "react-icons/fi"
 import { signOut } from "next-auth/react"
 
 const LogOutButton = () => {
+
     return (
         <button className={styles.button} onClick={signOut}>
             <FiLogOut />

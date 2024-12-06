@@ -1,7 +1,15 @@
 import DashboardSidebar from "@/layout/DashboardSidebar"
+import { getServerSession } from "next-auth";
+import { authOptions } from "../api/auth/[...nextauth]/route";
+import { redirect } from "next/navigation";
 
+// import { useRouter } from "next/router";
 
-const DashboardLayout = ({ children }) => {
+const DashboardLayout = async ({ children }) => {
+  const session = await getServerSession(authOptions);
+  if (!session) {
+    redirect("/signin")
+  }
   return (
     <DashboardSidebar>
       {children}
