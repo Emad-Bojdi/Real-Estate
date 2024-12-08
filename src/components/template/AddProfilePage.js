@@ -1,9 +1,10 @@
 "use client"
 
+import RadioList from "@/module/RadioList"
 import TextInput from "@/module/TextInput"
 import styles from "@/template/AddProfilePage.module.css"
 
-import React from 'react'
+import React, { useState } from 'react'
 
 const AddProfilePage = () => {
 
@@ -29,7 +30,8 @@ const AddProfilePage = () => {
             <textInput title="شماره تماس" name="phone" profileData={profileData} setProfileData={setProfileData} />
             <textInput title="قیمت(تومان)" name="price" profileData={profileData} setProfileData={setProfileData} />
             <textInput title="بنگاه" name="realState" profileData={profileData} setProfileData={setProfileData} />
-            <button className={styles.submit} onClick={submitHandler}></button>
+            <RadioList profileData={profileData} setProfileData={setProfileData} />
+            <button className={styles.submit} onClick={submitHandler}> ثبت آگهی</button>
         </div>
     )
 }

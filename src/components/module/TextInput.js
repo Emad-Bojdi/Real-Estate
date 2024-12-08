@@ -12,7 +12,6 @@ const TextInput = ({ title, name, profileData, setProfileData, textarea = false 
         <div className={styles.container}>
             <p>{title}</p>
             {textarea ? <textarea ype="text" name={name} value={profileData[name]} onChange={changeHandler} /> : <input type="text" name={name} value={profileData[name]} onChange={changeHandler} />}
-
         </div>
     )
 }

@@ -1,10 +1,9 @@
+import AddProfilePage from '@/template/AddProfilePage';
 import React from 'react';
 
 const AddProfile = () => {
   return (
-    <div>
-      AddProfile
-    </div>
+    <AddProfilePage/>
   )
 }
 
