@@ -1,5 +1,6 @@
 "use client"
 
+import CustomerDatePicker from "@/module/CustomerDatePicker"
 import RadioList from "@/module/RadioList"
 import TextInput from "@/module/TextInput"
 import TextList from "@/module/TextList"
@@ -36,6 +37,7 @@ const AddProfilePage = () => {
             <RadioList profileData={profileData} setProfileData={setProfileData} />
             <TextList title="امکانات رفاهی" profileData={profileData} setProfileData={setProfileData} type="amenities"/>
             <TextList title="قوانین" profileData={profileData} setProfileData={setProfileData} type="rules"/>
+            <CustomerDatePicker profileData={profileData} setProfileData={setProfileData}/>
             <button className={styles.submit} onClick={submitHandler}> ثبت آگهی</button>
         </div>
     )
