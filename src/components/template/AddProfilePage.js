@@ -2,6 +2,7 @@
 
 import RadioList from "@/module/RadioList"
 import TextInput from "@/module/TextInput"
+import TextList from "@/module/TextList"
 import styles from "@/template/AddProfilePage.module.css"
 
 import React, { useState } from 'react'
@@ -20,7 +21,9 @@ const AddProfilePage = () => {
         rules: [],
         amenities: []
     })
-    const submitHandler = (event) => { }
+    const submitHandler = (event) => {
+        console.log(profileData)
+     }
     return (
         <div className={styles.container}>
             <h3> ثبت آگهی </h3>
@@ -31,6 +34,8 @@ const AddProfilePage = () => {
             <textInput title="قیمت(تومان)" name="price" profileData={profileData} setProfileData={setProfileData} />
             <textInput title="بنگاه" name="realState" profileData={profileData} setProfileData={setProfileData} />
             <RadioList profileData={profileData} setProfileData={setProfileData} />
+            <TextList title="امکانات رفاهی" profileData={profileData} setProfileData={setProfileData} type="amenities"/>
+            <TextList title="قوانین" profileData={profileData} setProfileData={setProfileData} type="rules"/>
             <button className={styles.submit} onClick={submitHandler}> ثبت آگهی</button>
         </div>
     )
