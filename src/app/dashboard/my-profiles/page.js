@@ -1,6 +1,8 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import User from "@/models/User";
+import MyProfilePage from "@/template/MyProfilePage";
 import connectDB from "@/utils/connectDB";
+import { getServerSession } from "next-auth";
 
 
 const MyProfile = async () => {
@@ -17,6 +19,7 @@ const MyProfile = async () => {
     
     return (
         <>
+        <MyProfilePage profiles={user.profiles}/>
         </>
     )
 }

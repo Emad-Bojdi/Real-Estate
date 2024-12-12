@@ -1,3 +1,4 @@
+import Profile from "@/models/Profile";
 import User from "@/models/User";
 import connectDB from "@/utils/connectDB";
 import { Types } from "mongoose";
@@ -28,7 +29,7 @@ export async function POST(req) {
         }
 
         if (
-            !title || !description || !location || !price || !phone || !realState || !constructionDate || category
+            !title || !description || !location || !price || !phone || !realState || !constructionDate || !category
         ) {
             return NextResponse.json({
                 error: "لطفا تمام موارد را کامل کنید"
@@ -37,13 +38,15 @@ export async function POST(req) {
             })
         }
 
-        const newProfile = await Profiler.create({ title, description, location, price: +price, phone, realState, constructionDate, amenities, rules, category, userId: new Types.ObjectId(user._id.toString()) })
+        const newProfile = await Profile.create({ title, description, location, price: +price, phone, realState, constructionDate, amenities, rules, category, userId: new Types.ObjectId(user._id.toString()) })
+        console.log(newProfile)
         return NextResponse.json({
             message: "آگهی جدید اضافه شد "
         }, {
             status: 201
         })
-    } catch (err) {
+        
+    } catch(err) {
         console.log(err);
         return NextResponse.json({ err: " مشکلی در سرور رخ داده است" }, { status: 500 })
     }

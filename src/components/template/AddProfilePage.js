@@ -41,7 +41,7 @@ const AddProfilePage = () => {
         if (data.error) {
             toast.error(data.error);
         } else {
-            toast.success(data.message);
+            toast.success("آگهی با موفقیت ثبت شد ");
         }
     }
     return (
@@ -50,9 +50,9 @@ const AddProfilePage = () => {
             <TextInput title="عنوان آگهی" name="title" profileData={profileData} setProfileData={setProfileData} />
             <TextInput title="توضیحات" name="description" profileData={profileData} setProfileData={setProfileData} textarea={true} />
             <TextInput title="آدرس" name="location" profileData={profileData} setProfileData={setProfileData} textarea={true} />
-            <textInput title="شماره تماس" name="phone" profileData={profileData} setProfileData={setProfileData} />
-            <textInput title="قیمت(تومان)" name="price" profileData={profileData} setProfileData={setProfileData} />
-            <textInput title="بنگاه" name="realState" profileData={profileData} setProfileData={setProfileData} />
+            <TextInput title="شماره تماس" name="phone" profileData={profileData} setProfileData={setProfileData} />
+            <TextInput title="قیمت(تومان)" name="price" profileData={profileData} setProfileData={setProfileData} />
+            <TextInput title="بنگاه" name="realState" profileData={profileData} setProfileData={setProfileData} />
             <RadioList profileData={profileData} setProfileData={setProfileData} />
             <TextList title="امکانات رفاهی" profileData={profileData} setProfileData={setProfileData} type="amenities" />
             <TextList title="قوانین" profileData={profileData} setProfileData={setProfileData} type="rules" />
