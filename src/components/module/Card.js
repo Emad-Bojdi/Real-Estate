@@ -1,7 +1,7 @@
 import styles from "@/module/Card.module.css"
 import { RiHome3Line } from "react-icons/ri"
 import { MdApartment } from "react-icons/md"
-import { BiStore } from "react-icons/bi"
+import { BiLeftArrowAlt, BiStore } from "react-icons/bi"
 import { GiOfficerChair } from "react-icons/gi"
 import { HiOutlineLocationMarker } from "react-icons/hi"
 import { sp } from "@/utils/replaceNumber"
@@ -24,7 +24,7 @@ const Card = ({ data: { category, title, location, price } }) => {
                 {location}
             </p>
             <span>{sp(price)} تومان </span>
-            <Link href="/"> مشاهده آگهی  </Link>
+            <Link href="/"> مشاهده آگهی <BiLeftArrowAlt /> </Link>
         </div>
     )
 }
