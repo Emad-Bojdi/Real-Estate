@@ -6,7 +6,8 @@ import Link from "next/link";
 import { signIn } from "next-auth/react";
 import { Toaster, toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import { ThreeDots } from "react-loader-spinner";
+
+import Loader from "@/module/Loader";
 
 
 const SignInPage = () => {
@@ -42,7 +43,7 @@ const SignInPage = () => {
                 <label>  رمز عبور: </label>
                 <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
                 {
-                    loading ? (<ThreeDots color="304ffe" height={45} ariaLabel="three-dots-loading" visible={true} wrapperStyle={{"margin" : "auto"}} />) : (<button type="submit" onClick={signInHandler}>
+                    loading ? (<Loader/>) : (<button type="submit" onClick={signInHandler}>
                         ورود
                     </button>)
                 }
