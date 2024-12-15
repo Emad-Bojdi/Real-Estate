@@ -2,16 +2,20 @@
 
 import { AiOutlineDelete } from "react-icons/ai"
 import { FiEdit } from "react-icons/fi"
-import Card from "./Card"
+import {Card} from "./Card"
 import styles from "@/module/DashboardCard.module.css"
+import { useRouter } from "next/navigation"
 
 
 
 const DashboardCard = ({ data }) => {
-    const editHandler = (e) => { }
+    const router = useRouter();
+    const editHandler = () => {
+        router.push(`/dashboard/my-profiles/${data._id}`)
+    }
     const deleteHandler = (e) => { }
     return (
-        <div>
+        <div className={styles.container}>
             <Card data={data} />
             <div className={styles.main}>
                 <button onClick={editHandler}>

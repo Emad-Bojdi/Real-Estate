@@ -2,18 +2,18 @@ import styles from "@/module/Card.module.css"
 import { RiHome3Line } from "react-icons/ri"
 import { MdApartment } from "react-icons/md"
 import { BiLeftArrowAlt, BiStore } from "react-icons/bi"
-import { GiOfficerChair } from "react-icons/gi"
+
 import { HiOutlineLocationMarker } from "react-icons/hi"
 import { sp } from "@/utils/replaceNumber"
 import Link from "next/link"
 
 
-const Card = ({ data: { category, title, location, price } }) => {
-    const icons = {
+ export const Card = ({ data: { category, title, location, price } }) => {
+     const icons = {
         villa: <RiHome3Line />,
         apartment: <MdApartment />,
         store: <BiStore />,
-        office: <GiOfficerChair />
+
     }
     return (
         <div className={styles.container}>
@@ -29,4 +29,4 @@ const Card = ({ data: { category, title, location, price } }) => {
     )
 }
 
-export default Card
+

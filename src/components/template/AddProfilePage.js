@@ -6,13 +6,12 @@ import RadioList from "@/module/RadioList"
 import TextInput from "@/module/TextInput"
 import TextList from "@/module/TextList"
 import styles from "@/template/AddProfilePage.module.css"
-import { set } from "mongoose"
-
-import React, { useState } from 'react'
+import { useRouter } from "next/navigation"
+import React, { useEffect, useState } from 'react'
 import { Toaster, toast } from "react-hot-toast"
 import { ThreeDots } from "react-loader-spinner"
 
-const AddProfilePage = () => {
+const AddProfilePage = ({ data }) => {
 
     const [profileData, setProfileData] = useState({
         title: "",
@@ -28,6 +27,17 @@ const AddProfilePage = () => {
     });
 
     const [loading, setLoading] = useState(false);
+    const router = useRouter();
+
+    useEffect(() => {
+        if(data) {
+            setProfileData({
+                ...data,
+                rules: data.rules || [],
+                amenities: data.amenities || []
+            });
+        }
+    }, [data])
 
     const submitHandler = async () => {
         setLoading(true);
@@ -42,11 +52,28 @@ const AddProfilePage = () => {
             toast.error(data.error);
         } else {
             toast.success("آگهی با موفقیت ثبت شد ");
+            router.refresh();
+        }
+    }
+
+    const editHandler = async () => {
+        setLoading(true);
+        const res = await fetch("/api/profile", {
+            method: "PATCH",
+            body: JSON.stringify(profileData),
+            headers: { "Content-Type": "application/json" },
+        });
+        const data = await res.json();
+        setLoading(false);
+        if (data.error) {
+            toast.error(data.error);
+        } else {
+            toast.success("آگهی با موفقیت ثبت شد ");
         }
     }
     return (
         <div className={styles.container}>
-            <h3> ثبت آگهی </h3>
+            <h3> {data ? "ویرایش آگهی" : " ثبت آگهی "}</h3>
             <TextInput title="عنوان آگهی" name="title" profileData={profileData} setProfileData={setProfileData} />
             <TextInput title="توضیحات" name="description" profileData={profileData} setProfileData={setProfileData} textarea={true} />
             <TextInput title="آدرس" name="location" profileData={profileData} setProfileData={setProfileData} textarea={true} />
@@ -58,11 +85,11 @@ const AddProfilePage = () => {
             <TextList title="قوانین" profileData={profileData} setProfileData={setProfileData} type="rules" />
             <CustomerDatePicker profileData={profileData} setProfileData={setProfileData} />
             {loading ? (
-                <Loader/>
-            ) : <button className={styles.submit} onClick={submitHandler}> ثبت آگهی</button>}
+                <Loader />
+            ) : data ? (<button className={styles.submit} onClick={editHandler}>ویرایش آگهی </button>) : (<button className={styles.submit} onClick={submitHandler}> ثبت آگهی </button>)}
             <Toaster />
         </div>
     )
 }
 
-export default AddProfilePage
+export default AddProfilePage;

@@ -15,7 +15,7 @@ const TextList = ({ title, profileData, setProfileData, type }) => {
     }
 
     const addHandler = () => {
-        setProfileData({ ...profileData, [type]: [...profileData[type], ""] })
+        setProfileData({ ...profileData, [type]: [...profileData[type], " "] })
         console.log(profileData[type])
     }
     const deleteHandler = (index) => {
@@ -26,8 +26,8 @@ const TextList = ({ title, profileData, setProfileData, type }) => {
     return (
         <div className={styles.container}>
             <p>{title}</p>
-            {
-                profileData[type].map((i, index) => (
+            { 
+                profileData[type]?.map((i, index) => (
                     <div className={styles.card} key={index}>
                         <input type="text" value={i} onChange={e => changeHandler(e, index)} />
                         <button onClick={() => deleteHandler(index)}>
@@ -35,7 +35,7 @@ const TextList = ({ title, profileData, setProfileData, type }) => {
                             <AiOutlineDelete />
                         </button>
                     </div>
-                ))}
+                )) }
             <button onClick={addHandler}>
                 افزودن
                 <MdOutlineLibraryAdd />
