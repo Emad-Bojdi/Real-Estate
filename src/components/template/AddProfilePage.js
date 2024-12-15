@@ -51,8 +51,9 @@ const AddProfilePage = ({ data }) => {
         if (data.error) {
             toast.error(data.error);
         } else {
-            toast.success("آگهی با موفقیت ثبت شد ");
+            toast.success(data.message);
             router.refresh();
+            setProfileData("");
         }
     }
 
@@ -68,7 +69,7 @@ const AddProfilePage = ({ data }) => {
         if (data.error) {
             toast.error(data.error);
         } else {
-            toast.success("آگهی با موفقیت ثبت شد ");
+            toast.success(data.message);
         }
     }
     return (

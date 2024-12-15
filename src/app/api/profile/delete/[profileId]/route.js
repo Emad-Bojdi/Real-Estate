@@ -26,14 +26,14 @@ export async function DELETE( req, context){
         }
 
         
-        const profile = await Profile.findOne({ _id })
+        const profile = await Profile.findOne({ _id:id })
         if (!user._id.equals(profile.userId)) {
             return NextResponse.json({
                 error: "دسترسی شما به  آگهی مخدود شده است!!"
             }, { status: 403 })
         }
 
-        await Profile.deleteOne({_id});
+        await Profile.deleteOne({_id : id});
         return NextResponse.json({message : "آگهی مورد نظر حذف شد "}, {status: 200})
     } catch (err) {
         console.log(err);

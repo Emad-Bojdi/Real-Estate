@@ -36,7 +36,7 @@ export async function POST(req) {
             })
         }
 
-        const newProfile = await Profile.create({ title, description, location, price: +price, phone, realState, constructionDate, amenities, rules, category, userId: new Types.ObjectId.createFromHexString(user._id.toString()) })
+        const newProfile = await Profile.create({ title, description, location, price: +price, phone, realState, constructionDate, amenities, rules, category, userId: new Types.ObjectId(user._id.toString()) })
         console.log(newProfile)
         return NextResponse.json({
             message: "آگهی جدید اضافه شد "
