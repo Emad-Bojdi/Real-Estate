@@ -1,9 +1,27 @@
 import Profile from "@/models/Profile";
 import User from "@/models/User";
 import connectDB from "@/utils/connectDB";
-import { Types } from "mongoose";
+import { connect, Types } from "mongoose";
 import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
+export async function GET() {
+    try {
+        await connectDB();
+
+        const profiles = await Profile.find().select("-userId");
+        console.log(profiles);
+        return NextResponse.json({
+            data: profiles
+        }, {
+            status: 200,
+        })
+    } catch (err) {
+        console.log(err);
+        return NextResponse.json({ err: " مشکلی در سرور رخ داده است" }, { status: 500 })
+    }
+}
+
+
 
 export async function POST(req) {
     try {
