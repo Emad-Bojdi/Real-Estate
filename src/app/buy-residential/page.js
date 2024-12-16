@@ -6,7 +6,7 @@ async function BuyResidential() {
 
   if(data.error) return <h3>مشکلی پیش امده است</h3>
   return (
-    <BuyResidentialPage data={data} />
+    <BuyResidentialPage data={data.data} />
   )
 }
 
