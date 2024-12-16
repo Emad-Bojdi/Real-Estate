@@ -17,6 +17,8 @@ const HomePage = () => {
         "خرم آباد"
     ]
     const subjects = [
+        //In each object, the first index is the name and the second index is the value
+        // keys are names, values are titles.
         { "villa": "ساختمان ویلایی" },
         { "apartment": "آپارتمان" },
         { "store": "مغازه" },
