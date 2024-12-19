@@ -16,5 +16,9 @@ const categories = {
   store: "مغازه",
   office: "دفتر",
 };
-
-export { services, cities, categories };
+const queries = [
+    //In each object, the first index is the name and the second index is the value
+    // keys are names, values are titles.
+    { apartment: "آپارتمان" }, { villa: "ویلا" }, { office: "دفتر" }, { store: "مغازه" }
+]
+export { services, cities, categories, queries };
