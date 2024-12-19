@@ -8,7 +8,7 @@ import { sp } from "@/utils/replaceNumber"
 import Link from "next/link"
 
 
- export const Card = ({ data: { category, title, location, price } }) => {
+ export const Card = ({ data: {_id, category, title, location, price } }) => {
      const icons = {
         villa: <RiHome3Line />,
         apartment: <MdApartment />,
@@ -24,7 +24,7 @@ import Link from "next/link"
                 {location}
             </p>
             <span>{sp(price)} تومان </span>
-            <Link href="/"> مشاهده آگهی <BiLeftArrowAlt /> </Link>
+            <Link href={`/buy-residential/${_id}`}> مشاهده آگهی <BiLeftArrowAlt /> </Link>
         </div>
     )
 }
