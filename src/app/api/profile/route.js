@@ -1,14 +1,14 @@
 import Profile from "@/models/Profile";
 import User from "@/models/User";
 import connectDB from "@/utils/connectDB";
-import { connect, Types } from "mongoose";
+import {  Types } from "mongoose";
 import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
 export async function GET() {
     try {
         await connectDB();
 
-        const profiles = await Profile.find().select("-userId");
+        const profiles = await Profile.find({ published: true }).select("-userId");
         console.log(profiles);
         return NextResponse.json({
             data: profiles

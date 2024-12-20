@@ -45,10 +45,16 @@ const profileSchema = new Schema({
     userId: {
         type: Schema.Types.ObjectId,
         ref: "User"
+    },
+    published:{
+        type: Boolean,
+        default: false
     }
-}, {
-    timeStamp: true
-});
+   }, 
+
+    {
+        timeStamp: true
+    });
 
 const Profile = models.Profile || model("Profile", profileSchema);
 
