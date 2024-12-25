@@ -25,13 +25,11 @@ const HomePage = () => {
                 </div>
             </div>
             <div className={styles.categories}>
-                {
-                    Object.keys(categories).map(i => {
-                        const [name] =i;
-                        const title = categories[name];
-                        return <CategoryCard key={name} name={name} title={title} />;
-                    })
-                }
+              {
+                   Object.entries(categories).map(([name, title]) => (
+                       <CategoryCard key={name} name={name} title={title} />
+                   ))
+               }
             </div>
             <div className={styles.city}>
                 <h3>شهر های پر بازدید</h3>

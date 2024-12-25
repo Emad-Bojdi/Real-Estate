@@ -6,6 +6,9 @@ import connectDB from "@/utils/connectDB";
 import User from "@/models/User";
 
 // import { useRouter } from "next/router";
+export const metadata = {
+  title: "پنل کاربری املاک"
+}
 
 const DashboardLayout = async ({ children }) => {
   const session = await getServerSession(authOptions);
@@ -16,6 +19,7 @@ const DashboardLayout = async ({ children }) => {
   await connectDB();
   const user = await User.findOne({email: session.user.email});
   console.log(user)
+  
 
   if(!user) return <h3>مشکلی پیش آمده است</h3>
   return (
