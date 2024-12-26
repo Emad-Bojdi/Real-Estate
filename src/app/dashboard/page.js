@@ -9,7 +9,6 @@ export default async function Dashboard() {
   await connectDB();
     const session = await getServerSession(authOptions);
     const user = await User.findOne({email: session.user.email});
-    console.log(user)
   return (
     <DashboardPage createdAt={user.createdAt}/>
   )

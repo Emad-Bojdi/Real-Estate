@@ -18,12 +18,11 @@ const DashboardLayout = async ({ children }) => {
 
   await connectDB();
   const user = await User.findOne({email: session.user.email});
-  console.log(user)
   
 
   if(!user) return <h3>مشکلی پیش آمده است</h3>
   return (
-    <DashboardSidebar>
+    <DashboardSidebar role={user.role} email={user.email}>
       {children}
     </DashboardSidebar>
   )

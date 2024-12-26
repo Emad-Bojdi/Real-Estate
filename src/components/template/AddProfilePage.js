@@ -53,7 +53,7 @@ const AddProfilePage = ({ data }) => {
         } else {
             toast.success(data.message);
             router.refresh();
-            setProfileData("");
+            setProfileData({});
         }
     }
 

@@ -6,6 +6,7 @@ import User from '@/models/User';
 import DashboardSidebar from '@/layout/DashboardSidebar';
 import AdminPage from '@/template/AdminPage';
 import Profile from '@/models/Profile';
+import { redirect } from 'next/navigation';
 
 const Admin = async () => {
     await connectDB();
@@ -13,11 +14,12 @@ const Admin = async () => {
     if(!session) redirect("/signin");
 
     const user = await User.findOne({email : session.user.email})
-    if(user.role === "ADMIN") redirect("/dashboard")
+    if(user.role !== "ADMIN") redirect("/dashboard");
+    const serializedUser = JSON.parse(JSON.stringify(user))
 
     const profiles = await Profile.find({published : false})
   return (
-    <DashboardSidebar role={user.role} email={user.email}>
+    <DashboardSidebar role={serializedUser.role} email={serializedUser.email}>
         <AdminPage profiles={profiles}/>
     </DashboardSidebar>
   )

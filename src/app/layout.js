@@ -6,16 +6,15 @@ import NextAuthProvider from "@/providers/NextAuthProvider"
 export const metadata = {
   title: 'املاک',
   description: 'سایت خرید و فروش املاک',
-
-
 }
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="fa" dir="rtl">
+    <html lang="fa" dir="rtl" data-new-gr-c-s-check-loaded="14.1147.0"
+      data-gr-ext-installed="">
       <body className={yekan.className}>
         <NextAuthProvider>
-        <Layout>{children}</Layout>
+          <Layout>{children}</Layout>
         </NextAuthProvider>
       </body>
     </html>

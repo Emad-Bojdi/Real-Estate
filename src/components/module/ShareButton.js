@@ -1,5 +1,7 @@
+"use client"
+
 import styles from "@/module/ShareButton.module.css"
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {LuShare2} from "react-icons/lu"
 
 
