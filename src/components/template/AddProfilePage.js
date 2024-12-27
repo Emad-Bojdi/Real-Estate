@@ -53,7 +53,18 @@ const AddProfilePage = ({ data }) => {
         } else {
             toast.success(data.message);
             router.refresh();
-            setProfileData({});
+            setProfileData({
+                title: "",
+                description: "",
+                location: "",
+                phone: "",
+                price: "",
+                realState: "",
+                constructionDate: new Date(),
+                category: "",
+                rules: [],
+                amenities: []
+            });
         }
     }
 
