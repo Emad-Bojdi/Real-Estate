@@ -8,13 +8,16 @@ import { HiOutlineLocationMarker } from "react-icons/hi"
 import { sp } from "@/utils/replaceNumber"
 import Link from "next/link"
 import { AiOutlineDelete } from "react-icons/ai"
+import toast from "react-hot-toast"
+import { useRouter } from "next/navigation"
 
 
 export const Card = ({ data: { _id, category, title, location, price }, role }) => {
+    const router = useRouter();
     console.log(role)
 
     const deleteHandler = async () => {
-        const res = await fetch(`/api/profile/delete/${data._id}`,
+        const res = await fetch(`/api/profile/delete/${_id}`,
             {
                 method: "DELETE",
             }
@@ -23,7 +26,7 @@ export const Card = ({ data: { _id, category, title, location, price }, role }) 
         if (info.error) {
             toast.error(info.error);
         } else {
-            toast.success(info.message);
+            toast.success("آگهی با موفقیت حذف شد");
             router.refresh();
         }
     }
