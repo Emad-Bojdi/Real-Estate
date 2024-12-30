@@ -16,7 +16,7 @@ const TextList = ({ title, profileData, setProfileData, type }) => {
 
     const addHandler = () => {
         setProfileData({ ...profileData, [type]: [...profileData[type], " "] })
-        console.log(profileData[type])
+        
     }
     const deleteHandler = (index) => {
         const list = [...profileData[type]];

@@ -43,7 +43,7 @@ export async function PATCH(req, context) {
 
     return NextResponse.json({ message: "آگهی منتشر شد" }, { status: 200 });
   } catch (err) {
-    console.log(err);
+    
     return NextResponse.json(
       { error: "مشکلی در سرور رخ داده است" },
       { status: 500 }

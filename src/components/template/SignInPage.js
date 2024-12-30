@@ -28,7 +28,7 @@ const SignInPage = () => {
         setLoading(false);
         if (res.error) {
             toast.error(res.error)
-            console.log(res.error);
+            
         }
         else {
             router.push("/")

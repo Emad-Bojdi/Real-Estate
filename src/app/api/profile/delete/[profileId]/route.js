@@ -36,7 +36,7 @@ export async function DELETE( req, context){
         await Profile.deleteOne({_id : id});
         return NextResponse.json({message : "آگهی مورد نظر حذف شد "}, {status: 200})
     } catch (err) {
-        console.log(err);
+        
         return NextResponse.json({ err: "مشکلی در سرور رخ داده است" }, { status: 500 })
     }
 }

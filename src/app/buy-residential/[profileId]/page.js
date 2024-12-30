@@ -2,6 +2,19 @@ import Profile from "@/models/Profile";
 import DetailsPage from "@/template/DetailsPage";
 import connectDB from "@/utils/connectDB"
 
+export const generateMetadata = async ({ params: { profileId } }) => {
+  await connectDB();
+  const profile = await Profile.findOne({ _id: profileId });
+
+  return {
+    title: profile.title,
+    description: profile.description,
+    authors: { name: profile.realState },
+    other: { mytag: "test meta tag" },
+  };
+};
+
+
 
 const ProfileDetails = async ({params : {profileId}}) => {
     await connectDB();
@@ -14,6 +27,8 @@ const ProfileDetails = async ({params : {profileId}}) => {
 }
 
 export default ProfileDetails;
+
+
 
 // export async function getStaticPaths() {
 //     // Call an external API endpoint to get posts

@@ -3,6 +3,8 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]/route";
 import User from "@/models/User";
 
+export const dynamic = 'force-dynamic';
+
 async function BuyResidential({searchParams}) {
   const res = await fetch("http://localhost:3000/api/profile", { cache: "no-store" });
   const data = await res.json();

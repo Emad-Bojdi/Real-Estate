@@ -6,8 +6,7 @@ import {CgProfile} from "react-icons/cg"
 import { getServerSession } from "next-auth"
 
 const DashboardSidebar =({children, role , email }) => {
-  console.log(role)
-    console.log(email)
+  
   return (
     <div className={styles.container}>
       <div className={styles.sidebar}>

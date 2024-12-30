@@ -3,7 +3,7 @@ import styles from "@/template/DashboardPage.module.css"
 
 
 const DashboardPage = async ({createdAt}) => {
-    console.log(createdAt)
+   
   return (
     <div className={styles.container}>
       <h3> سلام </h3>

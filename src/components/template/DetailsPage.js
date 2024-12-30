@@ -11,6 +11,10 @@ import { categories } from "@/constants/strings";
 import styles from "@/template/DetailsPage.module.css"
 
 const DetailsPage = ({ data: { title, location, description, amenities, rules, realState, phone, price, category, constructionDate } }) => {
+    if (!data){
+        <h2> مشکلی پیش آمده</h2>
+    }
+
     return (
         <div className={styles.container}>
             <div className={styles.main}>

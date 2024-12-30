@@ -9,14 +9,13 @@ export async function GET() {
         await connectDB();
 
         const profiles = await Profile.find({ published: true }).select("-userId");
-        console.log(profiles);
         return NextResponse.json({
             data: profiles
         }, {
             status: 200,
         })
     } catch (err) {
-        console.log(err);
+        
         return NextResponse.json({ err: " مشکلی در سرور رخ داده است" }, { status: 500 })
     }
 }
@@ -55,7 +54,7 @@ export async function POST(req) {
         }
 
         const newProfile = await Profile.create({ title, description, location, price: +price, phone, realState, constructionDate, amenities, rules, category, userId: new Types.ObjectId(user._id.toString()) })
-        console.log(newProfile)
+        
         return NextResponse.json({
             message: "آگهی جدید اضافه شد "
         }, {
@@ -63,7 +62,7 @@ export async function POST(req) {
         })
 
     } catch (err) {
-        console.log(err);
+        
         return NextResponse.json({ err: " مشکلی در سرور رخ داده است" }, { status: 500 })
     }
 }
@@ -123,7 +122,7 @@ export async function PATCH(req) {
         }, { status: 200 })
 
     } catch (err) {
-        console.log(err);
+        
         return NextResponse.json({ err: " مشکلی در سرور رخ داده است" }, { status: 500 })
     }
 }

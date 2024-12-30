@@ -14,7 +14,7 @@ import { useRouter } from "next/navigation"
 
 export const Card = ({ data: { _id, category, title, location, price }, role }) => {
     const router = useRouter();
-    console.log(role)
+    
 
     const deleteHandler = async () => {
         const res = await fetch(`/api/profile/delete/${_id}`,

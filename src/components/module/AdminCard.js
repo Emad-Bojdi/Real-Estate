@@ -10,7 +10,7 @@ const AdminCard = ({ data: { _id, title, description, location, price } }) => {
     const publishHandler = async () => {
         const res = await fetch(`/api/profile/published/${_id}`, { method: "PATCH" })
         const result = await res.json();
-        console.log(result)
+        
         if (result.message) {
             toast.success(result.message);
             router.refresh();

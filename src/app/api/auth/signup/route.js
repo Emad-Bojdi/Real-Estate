@@ -9,7 +9,7 @@ export async function POST(req) {
         await connectDB();
 
         const { email, password } = await req.json();
-        console.log({ email, password });
+        
 
         if (!email || !password) {
             return NextResponse.json({
@@ -20,7 +20,7 @@ export async function POST(req) {
                 })
         }
         const existingUser = await User.findOne({ email });
-        console.log(existingUser);
+        
         if (existingUser) {
             return NextResponse.json({
                 error: " این حساب کاربری وجود دارد "
@@ -35,7 +35,7 @@ export async function POST(req) {
         return NextResponse.json({ message: "حساب کاربری ایجاد شد" }, { status: 201 })
 
     } catch (err) {
-        console.log(err);
+        
         return NextResponse.json({ error: " مشکلی در سرور رخ داده است" },
             {
                 status: 500,
