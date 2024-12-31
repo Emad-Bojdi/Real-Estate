@@ -11,7 +11,7 @@ export async function GET() {
 
         const profiles = await Profile.find({ published: true }).select("-userId");
         return NextResponse.json({
-            data: profiles
+            data: JSON.parse(JSON.stringify(profiles))
         }, {
             status: 200,
         })
