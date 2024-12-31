@@ -5,7 +5,6 @@ import {  Types } from "mongoose";
 import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
 
-
 export async function GET() {
     try {
         await connectDB();
@@ -55,7 +54,7 @@ export async function POST(req) {
             })
         }
 
-        const newProfile = await Profile.create({ title, description, location, price: +price, phone, realState, constructionDate, amenities, rules, category, userId: new Types.ObjectId(user._id.toString()) })
+        const newProfile = await Profile.create({ title, description, location, price: +price, phone, realState, constructionDate, amenities, rules, category,userId: new Types.ObjectId(user._id.toString()), })
         
         return NextResponse.json({
             message: "آگهی جدید اضافه شد "

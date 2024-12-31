@@ -2,23 +2,23 @@ import Profile from "@/models/Profile";
 import DetailsPage from "@/template/DetailsPage";
 import connectDB from "@/utils/connectDB"
 
-export const generateMetadata = async ({ params: { profileId } }) => {
-  await connectDB();
-  const profile = await Profile.findOne({ _id: profileId });
+// export const generateMetadata = async ({ params: { profileId } }) => {
+//   await connectDB();
+//   const profile = await Profile.findById({  profileId });
 
-  return {
-    title: profile.title,
-    description: profile.description,
-    authors: { name: profile.realState },
-    other: { mytag: "test meta tag" },
-  };
-};
+//   return {
+//     title: profile.title,
+//     description: profile.description,
+//     authors: { name: profile.realState },
+//     other: { mytag: "test meta tag" },
+//   };
+// };
 
 
 
 const ProfileDetails = async ({params : {profileId}}) => {
     await connectDB();
-    const profile = await Profile.findOne({_id : profileId});
+    const profile = await Profile.findById(profileId);
 
     if (!profile) return <h3> مشکلی پیش آمده است </h3>
   return (
