@@ -4,6 +4,8 @@ import connectDB from "@/utils/connectDB";
 import {  Types } from "mongoose";
 import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
+
+
 export async function GET() {
     try {
         await connectDB();

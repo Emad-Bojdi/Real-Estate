@@ -16,17 +16,17 @@ export async function generateStaticParams() {
     searchParams: { category },
   }));
 }
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL || '';
 
 async function BuyResidential({ searchParams }) {
   try {
-    // Fetch profiles with caching
-    const res = await fetch("http://localhost:3000/api/profile", {
-      cache: 'no-store', // This makes it static
+    
+    const res = await fetch(`${BASE_URL}/api/profile`, {
+      cache: 'no-store', 
     });
     
     const data = await res.json();
 
-    // Get user role - this remains dynamic
     const session = await getServerSession(authOptions);
     let userRole = "USER";
     
