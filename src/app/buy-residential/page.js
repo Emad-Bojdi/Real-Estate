@@ -1,20 +1,29 @@
-import User from "@/models/User";
 import BuyResidentialPage from "@/template/BuyResidentialPage";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]/route";
-
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "";
+import User from "@/models/User";
+import connectDB from "@/utils/connectDB";
 
 export const dynamic = 'force-dynamic';
 
 async function BuyResidential({ searchParams }) {
-  
-  const res = await fetch(`${BASE_URL}/api/profile`, {
-    cache: "no-store",
-  });
-  const data = await res.json();
+  try {
+    await connectDB();
 
-  const session = await getServerSession(authOptions);
+    const res = await fetch(`${process.env.NEXTAUTH_URL}/api/profile`, {
+      cache: 'no-store',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (!res.ok) {
+      throw new Error(`HTTP error! status: ${res.status}`);
+    }
+
+    const data = await res.json();
+
+    const session = await getServerSession(authOptions);
     let userRole = "USER";
     
     if(session) {
@@ -24,14 +33,16 @@ async function BuyResidential({ searchParams }) {
       }
     }
 
-  if (data.error) return <h3>مشکلی پیش آمده است</h3>;
+    let finalData = data.data || [];
+    if (searchParams?.category) {
+      finalData = finalData.filter(i => i.category === searchParams.category);
+    }
 
-  let finalData = data.data;
-  if (searchParams.category) {
-    finalData = finalData.filter((i) => i.category === searchParams.category);
+    return <BuyResidentialPage data={finalData} role={userRole} />;
+  } catch (error) {
+    console.error('Error:', error);
+    return <div>خطا در بارگذاری اطلاعات</div>;
   }
-
-  return <BuyResidentialPage data={finalData} role={userRole}/>;
 }
 
 export default BuyResidential;

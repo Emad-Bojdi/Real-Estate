@@ -7,19 +7,26 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
     try {
-        await connectDB();
-
-        const profiles = await Profile.find({ published: true }).select("-userId");
-        return NextResponse.json({
-            data: JSON.parse(JSON.stringify(profiles))
-        }, {
-            status: 200,
-        })
-    } catch (err) {
-        
-        return NextResponse.json({ err: " مشکلی در سرور رخ داده است" }, { status: 500 })
+      await connectDB();
+      
+      const profiles = await Profile.find({ published: true }).select("-userId");
+      
+      // Properly serialize the data
+      const serializedProfiles = JSON.parse(JSON.stringify(profiles));
+  
+      return NextResponse.json({
+        data: serializedProfiles,
+        success: true
+      });
+      
+    } catch (error) {
+      console.error('Error:', error);
+      return NextResponse.json({
+        error: "مشکلی در سرور رخ داده است",
+        message: error.message
+      }, { status: 500 });
     }
-}
+  }
 
 
 
